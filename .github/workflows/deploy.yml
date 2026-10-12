@@ -22,9 +22,14 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-      - name: Configure base path for GitHub Pages
+      - name: Configure base path and wide 1600px layout
         run: |
           sed -i "s|output: 'static',|base: '/Soluciones-Mecanizado', output: 'static',|g" astro.config.mjs
+          sed -i 's/max-w-7xl/max-w-\[1600px\] whitespace-nowrap/g' src/components/Header.astro
+          sed -i 's/max-w-7xl/max-w-\[1600px\]/g' src/components/*.astro
+          sed -i 's/px-margin-mobile md:px-margin/px-4 sm:px-6 lg:px-10/g' src/components/*.astro
+          sed -i 's/gap-space-lg/gap-6 xl:gap-8 whitespace-nowrap/g' src/components/Header.astro
+          sed -i 's/gap-space-md/gap-5 whitespace-nowrap shrink-0/g' src/components/Header.astro
           sed -i 's|href="/|href="/Soluciones-Mecanizado/|g' src/layouts/Layout.astro src/components/*.astro src/pages/*.astro
           sed -i 's|src="/|src="/Soluciones-Mecanizado/|g' src/components/*.astro
           sed -i "s|url('/|url('/Soluciones-Mecanizado/|g" src/components/*.astro
