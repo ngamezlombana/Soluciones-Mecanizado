@@ -1,0 +1,100 @@
+---
+import { consultoriaData } from '../data/consultoria';
+---
+
+<section class="w-full bg-surface py-space-xl border-b border-surface-variant" id="servicios">
+  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-space-lg">
+    <!-- Header de Sección -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+      <div>
+        <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 bg-primary-container"></span>
+          SERVICIOS PROFESIONALES DE INGENIERÍA
+        </span>
+        <h2 class="font-display font-bold text-2xl sm:text-4xl uppercase text-on-surface tracking-wide mt-1">
+          CONSULTORÍA Y DESARROLLO CAD/CAM ESPECIALIZADO
+        </h2>
+      </div>
+      <p class="font-body text-sm text-secondary max-w-md">
+        Soluciones técnicas integrales para talleres metalmecánicos, departamentos de ingeniería y empresas de manufactura en Cali y a nivel nacional.
+      </p>
+    </div>
+
+    <!-- Grid de Servicios (5 cards) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+      {consultoriaData.servicios.map((srv) => (
+        <div class={`bg-surface-container p-space-md flex flex-col justify-between space-y-space-md border border-surface-variant hover:border-primary-container transition-colors group ${srv.destacado ? 'lg:col-span-2' : ''}`}>
+          <div class="space-y-space-sm">
+            <div class="flex items-center justify-between font-display font-semibold text-xs">
+              <span class="text-primary-container font-bold">{srv.codigo}</span>
+              <span class={`${srv.destacado ? 'bg-primary-container text-surface-container-lowest font-bold' : 'bg-surface-variant text-on-surface'} px-2 py-0.5`}>
+                {srv.tag}
+              </span>
+            </div>
+            
+            <h3 class="font-display font-bold text-xl uppercase text-on-surface">
+              {srv.titulo}
+            </h3>
+            
+            <p class="font-body text-sm text-secondary leading-relaxed">
+              {srv.descripcion}
+            </p>
+          </div>
+
+          <div class="space-y-space-sm">
+            <div class="space-y-space-xs pt-space-sm bg-surface-container-lowest p-space-sm border border-surface-variant/40">
+              <div class="font-display font-semibold text-[11px] text-primary-container uppercase tracking-wider">
+                {srv.especificacionesLabel}
+              </div>
+              <p class="font-body text-xs text-on-surface">
+                {srv.especificaciones}
+              </p>
+              <div class="flex items-center justify-between pt-1 font-display font-semibold text-[11px] text-secondary border-t border-surface-variant/40 mt-1">
+                <span>{srv.pieLabel}</span>
+                <span class="text-on-surface font-bold">{srv.pieValor}</span>
+              </div>
+            </div>
+
+            <!-- Botón obligatorio: "Solicitar asesoría" que lleva al formulario con el servicio preseleccionado -->
+            <button 
+              type="button"
+              onclick={`preselectService('${srv.titulo}')`}
+              class="w-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-surface-container-lowest transition-colors py-2 px-3 font-display font-bold text-xs uppercase tracking-wider flex items-center justify-between border border-surface-variant"
+            >
+              <span>SOLICITAR ASESORÍA</span>
+              <span class="text-primary-container group-hover:text-surface-container-lowest">→</span>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Script para desplazarse al formulario y preseleccionar el servicio -->
+<script is:inline>
+  function preselectService(nombreServicio) {
+    const select = document.getElementById('servicioSelect');
+    const formSection = document.getElementById('cotizador');
+    
+    if (select) {
+      // Find matching option or closest match
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].text.toLowerCase().includes(nombreServicio.toLowerCase()) || 
+            nombreServicio.toLowerCase().includes(select.options[i].text.toLowerCase())) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    }
+    
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+      // Focus on first input
+      setTimeout(() => {
+        const firstInput = document.getElementById('clienteNombre');
+        if (firstInput) firstInput.focus();
+      }, 500);
+    }
+  }
+</script>

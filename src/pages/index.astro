@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import TopRunner from '../components/TopRunner.astro';
+import Hero from '../components/Hero.astro';
+import TrustStats from '../components/TrustStats.astro';
+import Services from '../components/Services.astro';
+import HowWeWork from '../components/HowWeWork.astro';
+import Testimonials from '../components/Testimonials.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Faq from '../components/Faq.astro';
+import CoverageMap from '../components/CoverageMap.astro';
+import EmergencyTape from '../components/EmergencyTape.astro';
+import Footer from '../components/Footer.astro';
+import MobileBottomBar from '../components/MobileBottomBar.astro';
+---
+
+<Layout>
+  <!-- Cabecera de Navegación Fija -->
+  <Header />
+
+  <!-- Espaciador de cabecera fija y contenido principal -->
+  <main class="w-full pt-16 bg-surface min-h-screen">
+    <!-- 1. Cinta Superior Hazard & Cartesian -->
+    <TopRunner />
+
+    <!-- 2. Hero Section: Asesoría, Titular Industrial, CAD callout y Live Status -->
+    <Hero />
+
+    <!-- 3. Franja de Confianza Técnica (4 Métricas y Capacidades Clave) -->
+    <TrustStats />
+
+    <!-- 4. Servicios Industriales CNC (5 Cards con Preselección a Cotizador) -->
+    <Services />
+
+    <!-- 5. Cómo Trabajamos (Protocolo de 3 Fases de Ingeniería) -->
+    <HowWeWork />
+
+    <!-- 6. Opiniones de Jefes de Planta y Diseñadores -->
+    <Testimonials />
+
+    <!-- 7. Formulario Interactivo: Solicita tu Diagnóstico Técnico -->
+    <QuoteForm />
+
+    <!-- 8. Preguntas Frecuentes de Ingeniería (Acordeón Accesible) -->
+    <Faq />
+
+    <!-- 9. Dónde Estamos: Cobertura Industrial en Cali y Valle -->
+    <CoverageMap />
+
+    <!-- 10. Franja Inferior de Emergencias Técnicas -->
+    <EmergencyTape />
+  </main>
+
+  <!-- Pie de Página Industrial -->
+  <Footer />
+
+  <!-- Barra Fija Inferior en Móvil -->
+  <MobileBottomBar />
+</Layout>

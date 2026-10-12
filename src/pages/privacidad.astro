@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { consultoriaData } from '../data/consultoria';
+---
+
+<Layout title={`Política de Privacidad | ${consultoriaData.nombreEmpresa}`} description="Términos y política de privacidad de datos de la web.">
+  <Header />
+
+  <main class="w-full pt-24 pb-16 bg-surface min-h-screen">
+    <div class="w-full max-w-4xl mx-auto px-margin-mobile md:px-margin space-y-6">
+      <div class="border-b border-surface-variant pb-4">
+        <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container">
+          DOCUMENTO LEGAL
+        </span>
+        <h1 class="font-display font-bold text-3xl sm:text-4xl uppercase text-on-surface mt-1">
+          POLÍTICA DE PRIVACIDAD
+        </h1>
+        <p class="font-body text-xs text-secondary mt-1">
+          * Texto provisional marcado para revisión legal final.
+        </p>
+      </div>
+
+      <div class="space-y-4 font-body text-sm text-secondary leading-relaxed bg-surface-container p-6 border border-surface-variant">
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface">1. TRATAMIENTO DE DATOS PERSONALES</h2>
+        <p>
+          En este sitio web <strong class="text-on-surface">NO se almacenan datos personales en servidores ni bases de datos</strong>. Cuando utilizas el formulario «Solicita tu diagnóstico», la información es procesada localmente en tu navegador web para generar un enlace directo de mensajería a través de la aplicación WhatsApp hacia el <strong class="text-on-surface">{consultoriaData.consultor.nombre}</strong>.
+        </p>
+
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface pt-4">2. FINALIDAD DE LA COMUNICACIÓN</h2>
+        <p>
+          Los datos que decidas compartir voluntariamente por WhatsApp (nombre, teléfono, empresa, detalles de planos o piezas mecánicas) se emplearán exclusivamente para responder a tu solicitud de cotización técnica, coordinar visitas en planta o brindar soporte técnico.
+        </p>
+
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface pt-4">3. CONFIDENCIALIDAD TÉCNICA E INDUSTRIAL</h2>
+        <p>
+          Se garantiza reserva total sobre cualquier archivo CAD, plano dimensional o especificación compartida con el consultor.
+        </p>
+
+        <div class="pt-6">
+          <a href="/" class="inline-flex items-center gap-1.5 font-display font-bold text-xs uppercase tracking-wider text-primary-container hover:underline">
+            ← Volver a la portada principal
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

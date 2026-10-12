@@ -1,0 +1,52 @@
+---
+import { consultoriaData } from '../data/consultoria';
+---
+
+<section class="w-full bg-surface py-space-xl border-b border-surface-variant" id="opiniones">
+  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-space-lg">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+      <div>
+        <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 bg-primary-container"></span>
+          REPUTACIÓN Y EXPERIENCIA
+        </span>
+        <h2 class="font-display font-bold text-2xl sm:text-4xl uppercase text-on-surface tracking-wide mt-1">
+          OPINIONES DE JEFES DE PLANTA Y DISEÑADORES
+        </h2>
+      </div>
+      <a 
+        href={consultoriaData.redes.maps} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="font-display font-bold text-xs uppercase tracking-wider text-primary-container hover:text-on-surface transition-colors flex items-center gap-1"
+      >
+        <span>Ver testimonios de ingeniería</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+      {consultoriaData.testimonios.map((item) => (
+        <div class="bg-surface-container p-space-md flex flex-col justify-between space-y-space-md border border-surface-variant">
+          <div class="space-y-space-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-primary-container text-sm">★★★★★</span>
+              <span class="font-display font-semibold text-[11px] text-secondary tracking-wider">{item.verificado}</span>
+            </div>
+            <p class="font-body text-sm text-on-surface italic leading-relaxed">
+              "{item.comentario}"
+            </p>
+          </div>
+          <div class="border-t border-surface-variant/40 pt-space-sm">
+            <div class="font-display font-bold text-sm uppercase text-on-surface">
+              {item.autor}
+            </div>
+            <div class="font-body text-xs text-secondary">
+              {item.cargo} · <span class="text-on-surface">{item.empresa}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

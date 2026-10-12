@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { consultoriaData } from '../data/consultoria';
+---
+
+<Layout title={`Política de Cookies | ${consultoriaData.nombreEmpresa}`} description="Información acerca del uso de cookies en el sitio web.">
+  <Header />
+
+  <main class="w-full pt-24 pb-16 bg-surface min-h-screen">
+    <div class="w-full max-w-4xl mx-auto px-margin-mobile md:px-margin space-y-6">
+      <div class="border-b border-surface-variant pb-4">
+        <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container">
+          DOCUMENTO LEGAL
+        </span>
+        <h1 class="font-display font-bold text-3xl sm:text-4xl uppercase text-on-surface mt-1">
+          POLÍTICA DE COOKIES
+        </h1>
+        <p class="font-body text-xs text-secondary mt-1">
+          * Texto provisional marcado para revisión legal final.
+        </p>
+      </div>
+
+      <div class="space-y-4 font-body text-sm text-secondary leading-relaxed bg-surface-container p-6 border border-surface-variant">
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface">1. SITIO WEB LIBRE DE COOKIES DE SEGUIMIENTO</h2>
+        <p>
+          Este sitio web está construido con arquitectura estática de alto rendimiento. <strong class="text-on-surface">No utilizamos cookies de seguimiento, ni cookies publicitarias, ni herramientas invasivas de analítica de terceros</strong> (como píxeles de remarketing o Google Analytics sin consentimiento).
+        </p>
+        <p>
+          Por este motivo, su navegación no es rastreada entre sitios web y no es necesario mostrarle un banner intrusivo de consentimiento de cookies.
+        </p>
+
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface pt-4">2. ENLACES EXTERNOS</h2>
+        <p>
+          Al hacer clic en enlaces externos (como WhatsApp o Google Maps), usted accederá a los servicios de dichas compañías, las cuales cuentan con sus propias políticas de privacidad y gestión de cookies.
+        </p>
+
+        <div class="pt-6">
+          <a href="/" class="inline-flex items-center gap-1.5 font-display font-bold text-xs uppercase tracking-wider text-primary-container hover:underline">
+            ← Volver a la portada principal
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

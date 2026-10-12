@@ -1,0 +1,138 @@
+---
+import { consultoriaData } from '../data/consultoria';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Soluciones en Mecanizado CNC & CAD/CAM | Ing. Nestor Alonso Gamez L. - Cali",
+  description = "Asesoría y consultoría especializada en mecanizado CNC, programación Mastercam, SolidWorks, optimización de código G y reducción de tiempos de ciclo en Cali y Valle del Cauca.",
+  canonicalUrl = consultoriaData.contacto.dominio,
+} = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": `${consultoriaData.nombreEmpresa} - ${consultoriaData.consultor.nombre}`,
+  "image": `${consultoriaData.contacto.dominio}/fotos/taller-cnc-cali.webp`,
+  "telephone": consultoriaData.contacto.telefonoRaw,
+  "url": consultoriaData.contacto.dominio,
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zona Industrial Cali - Yumbo",
+    "addressLocality": consultoriaData.ubicacion.ciudad,
+    "addressRegion": consultoriaData.ubicacion.departamento,
+    "postalCode": "760001",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 3.4516,
+    "longitude": -76.5320
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "13:00"
+    }
+  ],
+  "knowsAbout": [
+    "Mecanizado CNC",
+    "Programación CAM Mastercam",
+    "SolidWorks CAD 3D",
+    "AutoCAD 2D GD&T",
+    "Optimización de Código G",
+    "Diseño de Matrices y Moldes",
+    "BobCAD-CAM"
+  ],
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Valle del Cauca"
+    },
+    {
+      "@type": "Country",
+      "name": "Colombia"
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${consultoriaData.contacto.dominio}/fotos/taller-cnc-cali.webp`} />
+    <meta property="og:locale" content="es_CO" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${consultoriaData.contacto.dominio}/fotos/taller-cnc-cali.webp`} />
+
+    <!-- Fuentes Locales Incrustadas (Zero External Requests) -->
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+
+    <!-- JSON-LD Estructurado -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <style is:global>
+      /* Enforce strict zero-radius and engineering focus */
+      * {
+        border-radius: 0px !important;
+      }
+      
+      /* Subtle Cartesian grid pattern for industrial backgrounds */
+      .bg-grid-cartesian {
+        background-size: 24px 24px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 196, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 196, 0, 0.04) 1px, transparent 1px);
+      }
+
+      /* Hazard striping ribbon */
+      .bg-hazard-stripes {
+        background: repeating-linear-gradient(
+          -45deg,
+          #ffc400,
+          #ffc400 12px,
+          #121416 12px,
+          #121416 24px
+        );
+      }
+
+      /* Focus styling accessible and industrial */
+      a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+        outline: 2px solid #ffc400 !important;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body class="bg-surface font-body text-on-surface antialiased selection:bg-primary-container selection:text-surface-container-lowest pb-16 md:pb-0">
+    <slot />
+  </body>
+</html>

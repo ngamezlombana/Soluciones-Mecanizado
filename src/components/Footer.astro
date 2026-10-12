@@ -1,0 +1,91 @@
+---
+import { consultoriaData } from '../data/consultoria';
+---
+
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant text-secondary font-body text-xs">
+  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin py-space-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl border-b border-surface-variant pb-space-xl">
+      <!-- Columna 1: Identidad -->
+      <div class="space-y-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <div class="w-2.5 h-2.5 bg-primary-container"></div>
+          <span class="font-display font-bold text-base uppercase tracking-wider text-on-surface">
+            {consultoriaData.nombreEmpresa}
+          </span>
+        </div>
+        <p class="text-secondary leading-relaxed text-xs">
+          {consultoriaData.consultor.nombre}. Consultoría y asesoría técnica especializada en diseño mecánico paramétrico, programación CAM y optimización de procesos de maquinado CNC.
+        </p>
+        <div class="pt-space-xs">
+          <span class="font-display font-semibold text-[11px] uppercase tracking-widest text-outline">
+            ESPECIALISTA INDEPENDIENTE EN CALI
+          </span>
+        </div>
+      </div>
+
+      <!-- Columna 2: Ubicación & Contacto -->
+      <div class="space-y-space-sm">
+        <div class="font-display font-bold text-sm uppercase tracking-wider text-on-surface border-l-2 border-primary-container pl-2">
+          Ubicación y Cobertura
+        </div>
+        <p class="text-secondary leading-relaxed">
+          Atención en plantas de Cali, Yumbo y Jamundí<br>
+          Valle del Cauca, Colombia<br>
+          Consultoría remota a todo el país
+        </p>
+        <p class="text-secondary pt-1">
+          WhatsApp: <a href={`tel:${consultoriaData.contacto.telefonoRaw}`} class="text-on-surface font-semibold hover:text-primary-container">{consultoriaData.contacto.telefonoDisplay}</a><br>
+          Email: <span class="text-on-surface">{consultoriaData.contacto.email}</span>
+        </p>
+      </div>
+
+      <!-- Columna 3: Software de Ingeniería -->
+      <div class="space-y-space-sm">
+        <div class="font-display font-bold text-sm uppercase tracking-wider text-on-surface border-l-2 border-primary-container pl-2">
+          Software de Ingeniería
+        </div>
+        <ul class="space-y-1.5 text-secondary">
+          {consultoriaData.softwareHerramientas.map((soft) => (
+            <li class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 bg-primary-container inline-block"></span>
+              <span>{soft}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 4: Controles CNC y Postprocesadores -->
+      <div class="space-y-space-sm">
+        <div class="font-display font-bold text-sm uppercase tracking-wider text-on-surface border-l-2 border-primary-container pl-2">
+          Controles y G-Code
+        </div>
+        <p class="text-secondary leading-relaxed">
+          Compatibilidad con Fanuc, Haas, Siemens Sinumerik, Heidenhain y Mach3. Depuración de trayectorias y postprocesadores.
+        </p>
+        <div class="pt-2">
+          <a 
+            href={`https://wa.me/${consultoriaData.contacto.whatsappRaw}?text=${encodeURIComponent("Hola Ing. Nestor, tengo una consulta sobre postprocesadores o control CNC.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 font-display font-bold text-xs uppercase tracking-wider text-primary-container hover:text-on-surface transition-colors"
+          >
+            <span>Consultar Soporte de Controladores</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enlaces Legales y Copyright -->
+    <div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-display font-semibold text-xs uppercase tracking-widest text-secondary">
+      <div>
+        © {new Date().getFullYear()} {consultoriaData.consultor.nombre} - Soluciones en Mecanizado CNC. Cali, Colombia.
+      </div>
+      <div class="flex flex-wrap items-center gap-space-md text-[11px]">
+        <a href="/aviso-legal" class="hover:text-primary-container transition-colors">Aviso Legal</a>
+        <a href="/privacidad" class="hover:text-primary-container transition-colors">Privacidad</a>
+        <a href="/cookies" class="hover:text-primary-container transition-colors">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { consultoriaData } from '../data/consultoria';
+---
+
+<Layout title={`Aviso Legal | ${consultoriaData.nombreEmpresa}`} description="Información legal y términos de uso del sitio web.">
+  <Header />
+
+  <main class="w-full pt-24 pb-16 bg-surface min-h-screen">
+    <div class="w-full max-w-4xl mx-auto px-margin-mobile md:px-margin space-y-6">
+      <div class="border-b border-surface-variant pb-4">
+        <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container">
+          DOCUMENTO LEGAL
+        </span>
+        <h1 class="font-display font-bold text-3xl sm:text-4xl uppercase text-on-surface mt-1">
+          AVISO LEGAL
+        </h1>
+        <p class="font-body text-xs text-secondary mt-1">
+          * Texto provisional marcado para revisión legal final.
+        </p>
+      </div>
+
+      <div class="space-y-4 font-body text-sm text-secondary leading-relaxed bg-surface-container p-6 border border-surface-variant">
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface">1. DATOS IDENTIFICATIVOS</h2>
+        <p>
+          En cumplimiento con la normativa aplicable, se informa que el presente sitio web es operado de manera independiente por el <strong class="text-on-surface">{consultoriaData.consultor.nombre}</strong>, con sede profesional en la ciudad de {consultoriaData.ubicacion.ciudad}, {consultoriaData.ubicacion.departamento}, Colombia.
+        </p>
+        <p>
+          Canal de contacto directo: Teléfono / WhatsApp: <strong class="text-on-surface">{consultoriaData.contacto.telefonoDisplay}</strong> | Correo: <strong class="text-on-surface">{consultoriaData.contacto.email}</strong>.
+        </p>
+
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface pt-4">2. PROPIEDAD INTELECTUAL Y CONFIDENCIALIDAD</h2>
+        <p>
+          Todos los contenidos, diseños, códigos y marcas comerciales mostrados son propiedad del titular o cuentan con las autorizaciones pertinentes. Las referencias a marcas de software de terceros (tales como SolidWorks®, Mastercam®, AutoCAD®, Haas®, Fanuc®) se realizan con carácter estrictamente descriptivo e informativo de compatibilidad técnica.
+        </p>
+        <p>
+          Los planos, modelos 3D y códigos G suministrados por clientes para evaluación están amparados bajo estricta confidencialidad industrial.
+        </p>
+
+        <h2 class="font-display font-bold text-lg uppercase text-on-surface pt-4">3. EXENCIÓN DE RESPONSABILIDAD</h2>
+        <p>
+          La asesoría técnica se suministra con base en las especificaciones y tolerancias provistas por el cliente. La verificación final antes del mecanizado en máquina física es responsabilidad del operador o supervisor de taller.
+        </p>
+
+        <div class="pt-6">
+          <a href="/" class="inline-flex items-center gap-1.5 font-display font-bold text-xs uppercase tracking-wider text-primary-container hover:underline">
+            ← Volver a la portada principal
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

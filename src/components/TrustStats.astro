@@ -1,0 +1,29 @@
+---
+import { consultoriaData } from '../data/consultoria';
+---
+
+<section class="w-full bg-surface-container-lowest py-space-lg border-b border-surface-variant">
+  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+      {consultoriaData.metricasClave.map((item) => (
+        <div class="bg-surface-container-low p-space-md relative flex flex-col justify-between border border-surface-variant hover:border-primary-container transition-colors group">
+          <div>
+            <div class="flex items-center justify-between mb-space-sm">
+              <span class="font-display font-bold text-2xl text-primary-container leading-none">{item.numero}</span>
+              <span class="w-2.5 h-2.5 bg-secondary-container group-hover:bg-primary-container transition-colors"></span>
+            </div>
+            <h4 class="font-display font-bold text-lg uppercase text-on-surface mb-1 leading-tight">
+              {item.titulo}
+            </h4>
+            <p class="font-body text-xs text-secondary leading-relaxed">
+              {item.descripcion}
+            </p>
+          </div>
+          <div class="mt-space-sm pt-space-xs text-[11px] font-display font-semibold tracking-wider text-outline border-t border-surface-variant/50">
+            {item.tag}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

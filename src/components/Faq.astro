@@ -1,0 +1,33 @@
+---
+import { consultoriaData } from '../data/consultoria';
+---
+
+<section class="w-full bg-surface py-space-xl border-b border-surface-variant" id="faqs">
+  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-space-lg">
+    <div>
+      <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 bg-primary-container"></span>
+        ESPECIFICACIONES Y CONDICIONES
+      </span>
+      <h2 class="font-display font-bold text-2xl sm:text-4xl uppercase text-on-surface tracking-wide mt-1">
+        PREGUNTAS FRECUENTES DE INGENIERÍA
+      </h2>
+    </div>
+
+    <div class="space-y-space-sm max-w-4xl">
+      {consultoriaData.faqs.map((faq) => (
+        <details class="bg-surface-container border border-surface-variant group overflow-hidden transition-all">
+          <summary class="w-full p-space-md text-left flex items-center justify-between font-display font-bold text-base sm:text-lg uppercase text-on-surface hover:text-primary-container cursor-pointer select-none list-none transition-colors">
+            <span>{faq.pregunta}</span>
+            <span class="font-mono text-primary-container text-xl ml-4 shrink-0 group-open:rotate-45 transition-transform duration-200">
+              +
+            </span>
+          </summary>
+          <div class="px-space-md pb-space-md font-body text-sm text-secondary border-t border-surface-variant/40 pt-3 leading-relaxed">
+            {faq.respuesta}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

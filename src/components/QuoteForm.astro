@@ -1,0 +1,255 @@
+---
+import { consultoriaData } from '../data/consultoria';
+---
+
+<section class="w-full bg-surface-container-lowest py-space-xl border-b border-surface-variant" id="cotizador">
+  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-space-lg">
+    <!-- Barra superior técnica -->
+    <div class="bg-surface-container p-space-sm flex flex-wrap items-center justify-between gap-space-sm text-[11px] font-display font-semibold border border-surface-variant">
+      <div class="flex items-center gap-2 text-primary-container">
+        <span class="w-2.5 h-2.5 bg-primary-container"></span>
+        <span class="font-bold tracking-wider">CONSULTORÍA &amp; SERVICIOS DE INGENIERÍA CAD/CAM</span>
+      </div>
+      <div class="text-secondary tracking-wider uppercase">
+        {consultoriaData.consultor.nombre} // RESPUESTA INMEDIATA
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+      <!-- Columna Formulario (8 cols) -->
+      <div class="lg:col-span-8 bg-surface-container p-space-lg space-y-space-md border border-surface-variant">
+        <div>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl uppercase text-on-surface">
+            SOLICITA TU DIAGNÓSTICO O ASESORÍA TÉCNICA
+          </h2>
+          <p class="font-body text-sm text-secondary mt-1">
+            Ingresa los detalles de tu requerimiento. El formulario valida tus datos y estructura un mensaje técnico formal que se envía directamente a WhatsApp sin intermediarios ni almacenamiento externo.
+          </p>
+        </div>
+
+        <form class="space-y-space-md" id="cncDiagnosisForm" onsubmit="event.preventDefault(); submitDiagnosis();">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="space-y-1">
+              <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="clienteNombre">
+                Nombre y Apellido *
+              </label>
+              <input 
+                type="text" 
+                id="clienteNombre" 
+                required 
+                placeholder="Ej: Ing. Carlos Montoya"
+                class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+              />
+            </div>
+
+            <div class="space-y-1">
+              <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="clienteTel">
+                Teléfono / WhatsApp *
+              </label>
+              <input 
+                type="tel" 
+                id="clienteTel" 
+                required 
+                placeholder="+57 305 291 2936"
+                class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="space-y-1">
+              <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="clienteEmpresa">
+                Empresa / Taller / Particular
+              </label>
+              <input 
+                type="text" 
+                id="clienteEmpresa" 
+                placeholder="Ej: Industrias Metalmecánicas S.A.S"
+                class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+              />
+            </div>
+
+            <div class="space-y-1">
+              <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="servicioSelect">
+                Servicio de Interés *
+              </label>
+              <select 
+                id="servicioSelect" 
+                required
+                class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+              >
+                <option value="Asesoría y Diagnóstico CNC">Asesoría y Diagnóstico CNC en Planta/Remoto</option>
+                <option value="Diseño Mecánico y Planos 3D">Diseño Mecánico y Planos 3D (SolidWorks / AutoCAD)</option>
+                <option value="Programación CAM Mastercam / BobCAD-CAM">Programación CAM y Simulación (Mastercam / BobCAD-CAM)</option>
+                <option value="Optimización de Código G">Optimización de Código G y Reducción de Tiempos</option>
+                <option value="Acompañamiento a Empresas y Talleres">Acompañamiento a Empresas y Capacitación</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="space-y-1">
+              <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="softwareControlSelect">
+                Tipo de Máquina / Controlador / Software *
+              </label>
+              <select 
+                id="softwareControlSelect" 
+                required
+                class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+              >
+                <option value="Fanuc (Centro / Torno)">Control CNC Fanuc (Centro o Torno)</option>
+                <option value="Haas (NGC / Clásico)">Control Haas (Fresadora / Torno)</option>
+                <option value="Siemens Sinumerik">Siemens Sinumerik (828D / 840D)</option>
+                <option value="Heidenhain">Control Heidenhain TNC</option>
+                <option value="SolidWorks / Mastercam">SolidWorks y Mastercam CAM</option>
+                <option value="BobCAD-CAM / AutoCAD">BobCAD-CAM / AutoCAD 2D-3D</option>
+                <option value="Otro / Por Definir">Otro controlador o por evaluar</option>
+              </select>
+            </div>
+
+            <div class="space-y-1">
+              <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="modalidadSelect">
+                Modalidad de Asesoría *
+              </label>
+              <select 
+                id="modalidadSelect" 
+                required
+                class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+              >
+                <option value="Presencial en Planta (Cali / Yumbo)">Presencial en Planta (Cali, Yumbo, Valle)</option>
+                <option value="Remota / Virtual (Colombia / Internacional)">Remota / Virtual (Colombia / Exterior)</option>
+                <option value="Urgencia Técnica Inmediata">Urgencia Técnica en Producción</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label class="block font-display font-semibold text-xs uppercase tracking-wider text-secondary" for="clienteProblema">
+              Comentario / Problema a Resolver o Detalle de la Pieza *
+            </label>
+            <textarea 
+              id="clienteProblema" 
+              rows="3" 
+              required
+              placeholder="Describe el material (ej. Acero 4140, Aluminio 7075), tipo de pieza, tiempo de ciclo actual, plano a revisar o problema en máquina..."
+              class="w-full bg-surface text-on-surface p-space-sm font-body text-sm border border-surface-variant focus:border-primary-container focus:bg-surface-container-high transition-colors"
+            ></textarea>
+          </div>
+
+          <!-- Botón de Envío -->
+          <button 
+            type="submit" 
+            class="w-full bg-primary-container text-surface-container-lowest font-display font-bold text-sm uppercase tracking-wider py-4 px-6 hover:bg-on-surface hover:text-surface-container-lowest transition-colors flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>ENVIAR DIAGNÓSTICO POR WHATSAPP AHORA</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Columna Información de Contacto Profesional (4 cols) -->
+      <div class="lg:col-span-4 bg-surface-container-low p-space-lg flex flex-col justify-between space-y-space-md border border-surface-variant">
+        <div class="space-y-space-md">
+          <div class="pb-space-sm border-b border-surface-variant/40">
+            <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container">
+              CONTACTO PROFESIONAL DIRECTO
+            </span>
+            <h3 class="font-display font-bold text-xl uppercase text-on-surface mt-1">
+              CONSULTORÍA TÉCNICA
+            </h3>
+          </div>
+
+          <div class="space-y-space-sm font-body text-xs">
+            <div class="bg-surface p-space-sm space-y-1 border border-surface-variant">
+              <span class="font-display font-semibold text-[11px] uppercase text-secondary block">
+                INGENIERO CONSULTOR:
+              </span>
+              <span class="font-display font-bold text-base text-on-surface block">
+                {consultoriaData.consultor.nombre}
+              </span>
+              <span class="text-secondary block">
+                {consultoriaData.consultor.descripcion}
+              </span>
+            </div>
+
+            <div class="bg-surface p-space-sm space-y-1 border border-surface-variant">
+              <span class="font-display font-semibold text-[11px] uppercase text-secondary block">
+                LÍNEA DIRECTA / WHATSAPP:
+              </span>
+              <a 
+                href={`tel:${consultoriaData.contacto.telefonoRaw}`} 
+                class="font-display font-bold text-lg text-primary-container block hover:underline"
+              >
+                {consultoriaData.contacto.telefonoDisplay}
+              </a>
+            </div>
+
+            <div class="bg-surface p-space-sm space-y-1 border border-surface-variant">
+              <span class="font-display font-semibold text-[11px] uppercase text-secondary block">
+                MODALIDAD DE ATENCIÓN:
+              </span>
+              <span class="text-on-surface block font-bold">
+                Presencial: Cali, Zona Industrial Yumbo, Jamundí
+              </span>
+              <span class="text-secondary block">
+                Consultoría virtual y remota a todo el país
+              </span>
+            </div>
+
+            <div class="bg-surface p-space-sm space-y-1 border border-surface-variant">
+              <span class="font-display font-semibold text-[11px] uppercase text-secondary block">
+                HORARIOS:
+              </span>
+              <span class="text-primary-container font-bold block">
+                {consultoriaData.horario.diasSemana}
+              </span>
+              <span class="text-secondary block">
+                Sábados: {consultoriaData.horario.sabados}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-high p-space-sm font-display font-semibold text-xs text-secondary space-y-1 border border-surface-variant">
+          <div class="text-on-surface font-bold uppercase text-primary-container">
+            CONFIDENCIALIDAD INDUSTRIAL GARANTIZADA:
+          </div>
+          <div class="font-body text-[11px] text-secondary">
+            Todos los planos, archivos CAD (.SLDPRT, .DWG, .STEP) y programas CNC están protegidos bajo estricto acuerdo de confidencialidad técnica.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script de armado y envío de mensaje a WhatsApp -->
+<script is:inline define:vars={{ whatsappNumber: consultoriaData.contacto.whatsappRaw }}>
+  function submitDiagnosis() {
+    const nombre = document.getElementById('clienteNombre').value.trim();
+    const tel = document.getElementById('clienteTel').value.trim();
+    const empresa = document.getElementById('clienteEmpresa').value.trim() || 'Particular / Taller independiente';
+    const servicio = document.getElementById('servicioSelect').value;
+    const softwareControl = document.getElementById('softwareControlSelect').value;
+    const modalidad = document.getElementById('modalidadSelect').value;
+    const problema = document.getElementById('clienteProblema').value.trim();
+
+    const mensajeWhatsApp = 
+`*SOLICITUD DE ASESORÍA TÉCNICA - CNC & CAD/CAM*
+▪ *Cliente:* ${nombre}
+▪ *Teléfono:* ${tel}
+▪ *Empresa:* ${empresa}
+▪ *Servicio Requerido:* ${servicio}
+▪ *Máquina / Software:* ${softwareControl}
+▪ *Modalidad:* ${modalidad}
+▪ *Detalle / Problema:*
+${problema}
+
+Hola Ing. Nestor, solicito diagnóstico técnico y cotización para este requerimiento.`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+</script>
