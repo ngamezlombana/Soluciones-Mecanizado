@@ -3,7 +3,7 @@ import { consultoriaData } from '../data/consultoria';
 ---
 
 <section class="w-full bg-surface py-space-xl border-b border-surface-variant" id="opiniones">
-  <div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin space-y-space-lg">
+  <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 space-y-space-lg">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
       <div>
         <span class="font-display font-semibold text-xs uppercase tracking-widest text-primary-container flex items-center gap-1.5">
@@ -36,14 +36,6 @@ import { consultoriaData } from '../data/consultoria';
             <p class="font-body text-sm text-on-surface italic leading-relaxed">
               "{item.comentario}"
             </p>
-          </div>
-          <div class="border-t border-surface-variant/40 pt-space-sm">
-            <div class="font-display font-bold text-sm uppercase text-on-surface">
-              {item.autor}
-            </div>
-            <div class="font-body text-xs text-secondary">
-              {item.cargo} · <span class="text-on-surface">{item.empresa}</span>
-            </div>
           </div>
         </div>
       ))}
